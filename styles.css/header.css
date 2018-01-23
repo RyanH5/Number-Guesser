@@ -1,0 +1,14 @@
+header {
+  background-color: #404041;
+  height: 112px;
+}
+
+#header-title {
+  color: #dc548a;
+  text-align: center;
+  font-size: 3rem;
+}
+
+span {
+  color: #fff;
+}
