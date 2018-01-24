@@ -3,7 +3,8 @@
 <head>
   <title>Number Guesser</title>
     <link rel="stylesheet" type="text/css" href="styles.css/header.css">
-    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="styles.css/form.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -11,9 +12,15 @@
   </header>
   <main>
     <form>
-      <label for="user-input"></label>
-      <input type="text" name="user-input" id="user-input" placeholder="Enter your guess">
+      <label for="form_input"></label>
+      <input type="text" name="form_input" id="form_input" placeholder="Enter your guess">
+      <div id="form_btns">
+        <label for="form_btn_guess"></label>
+        <input type="submit" name="guess" value="Guess" class="form_btn" id="form_btn_guess">
+        <label for="form_btn_clear"></label>
+        <input type="submit" name="clear" value="Clear" class="form_btn" id="form_btn_clear">
+      </div>
     </form>
   </main>
 </body>
-</html>hhhhhhhhh
+</html>

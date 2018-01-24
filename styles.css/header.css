@@ -1,3 +1,14 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 header {
   background-color: #404041;
   height: 112px;
@@ -6,9 +17,11 @@ header {
 #header-title {
   color: #dc548a;
   text-align: center;
-  font-size: 3rem;
+  font-size: 3.7rem;
+  padding-top: 18px;
 }
 
 span {
   color: #fff;
+  font-weight: 300;
 }
