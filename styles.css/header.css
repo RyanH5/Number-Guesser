@@ -25,3 +25,15 @@ span {
   color: #fff;
   font-weight: 300;
 }
+
+#article_reset {
+  width: 472px;
+  margin: 0px auto;
+}
+
+#reset_btn {
+  width: 100%;
+  margin: 2% 0%;
+  height: 37px;
+  font-size: 1.5rem;
+}
