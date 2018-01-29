@@ -14,16 +14,16 @@
   <main>
     <form>
       <label for="form_input"></label>
-      <input type="text" name="form_input" id="form_input" placeholder="Enter your guess">
+      <input type="number" name="form_input" id="form_input" placeholder="Enter your guess">
       <div id="form_btns">
         <label for="form_btn_guess"></label>
-        <input type="submit" name="guess" value="Guess" class="form_btn" id="form_btn_guess">
+        <input type="submit" name="guess" value="Guess" class="form_btn" id="form_btn_guess" disabled="true">
         <label for="form_btn_clear"></label>
-        <input type="submit" name="clear" value="Clear" class="form_btn" id="form_btn_clear">
+        <input type="submit" name="clear" value="Clear" class="form_btn" id="form_btn_clear" disabled="true">
       </div>
-      <h2>Guess a number.</h2>
+      <h2 id="user_feedback_top">Guess a number.</h2>
       <article id="article_user_input">?</article>
-      <h2>Good Luck!</h2>
+      <h2 id="user_feedback_bottom">Good Luck!</h2>
       <article id="article_btn_reset">
         <input type="reset" name="reset" class="form_btn" id="form_btn_reset">
       </article>
