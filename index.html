@@ -21,11 +21,24 @@
         <label for="form_btn_clear"></label>
         <input type="submit" name="clear" value="Clear" class="form_btn" id="form_btn_clear" disabled="true">
       </div>
-      <h2 id="user_feedback_top">Guess a number.</h2>
-      <article id="article_user_input">?</article>
+      <h2 id="user_feedback_top">Guess a number
+        <span id="displayed_min" class="user_range_display"></span>-<span id="displayed_max" class="user_range_display"></span>.
+      </h2>
+      <article id="article_user_input">
+        <p></p>
+        <fieldset id="create_min_max_input">
+          <h2 id="set_your_guess">Set your own guessing range.</h2>
+          <label class="label_min_max" for="min">Min: </label>
+          <input type="number" name="min" id="user_selected_min">
+          <label class="label_min_max" for="max">Max: </label>
+          <input type="number" name="max" id="user_selected_max">
+          <label for="guessing_range_btn"></label>
+          <button type="submit" id="guessing_range_btn">Submit</button>
+        </fieldset>
+      </article>
       <h2 id="user_feedback_bottom">Good Luck!</h2>
       <article id="article_btn_reset">
-        <input type="reset" name="reset" class="form_btn" id="form_btn_reset">
+        <input type="reset" name="reset" class="form_btn" id="input_btn_reset" disabled="true">
       </article>
     </form>
   </main>
