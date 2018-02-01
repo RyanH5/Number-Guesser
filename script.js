@@ -1,28 +1,35 @@
-document.querySelector('#guessing_range_btn').addEventListener('click', getRandomNumber);
+document.querySelector('#guessing_range_btn').addEventListener('click', runGetRandomNumber);
 document.querySelector('#form_btn_guess').addEventListener('click', submitUserGuess);
 document.querySelector('#form_input').addEventListener('input', enableBtn);
 document.querySelector('#form_btn_clear').addEventListener('click', clearInputField);
 document.querySelector('#input_btn_reset').addEventListener('click', resetGame);
-document.querySelector('#guessing_range_btn').addEventListener('click', submitGuessingRange)
 
-function getRandomNumber(event) {
-  event.preventDefault();
+function minMax() {
   max = parseInt(document.querySelector('#user_selected_max').value);
   min  = parseInt(document.querySelector('#user_selected_min').value);
+}
+
+function getRandomNumber() {
   randomNum = Math.floor(Math.random() * (max - min +1) + min);
-  console.log(randomNum);
   enableBtn();
 }
 
+function runGetRandomNumber(event) {
+  event.preventDefault();
+  max = parseInt(document.querySelector('#user_selected_max').value);
+  min  = parseInt(document.querySelector('#user_selected_min').value);
+  getRandomNumber();
+  submitGuessingRange();
+}
+
 function enableBtn() {
-  if (document.querySelector('#form_input').value !== '' && document.querySelector('#user_selected_min').value !== '') {
+  if (document.querySelector('#form_input').value !== '' || document.querySelector('#user_selected_min').value !== '') {
     enableBtns();
     addEnabledStyle();
   } else {
     disableBtns();
   }
 }
-
 
 function enableBtns() {
   document.querySelector('#form_btn_guess').disabled = false;
@@ -47,9 +54,8 @@ function submitUserGuess(event) {
   event.preventDefault();
   validateRange();
   displayUserGuess();
-  console.log(randomNum); 
   validateGuess();    
-  clearAndFocusInputField();
+  clearAndFocusInputField();  
 }
 
 function displayUserGuess() {
@@ -65,7 +71,15 @@ function correctGuess() {
   if (userGuess === randomNum) {
   document.querySelector('#user_feedback_top').innerText = 'BOOM';
   document.querySelector('#user_feedback_bottom').innerText = 'You nailed it, bro!';
+  setTimeout(function() {levelup(); }, 2000);
 }
+}
+
+function levelup() {
+  min = min - 10;
+  max = max + 10;
+  document.querySelector('#user_feedback_top').innerText = "The new range is " + min + " to " + max;
+  getRandomNumber(); 
 }
 
 function tooHigh() {
@@ -118,7 +132,6 @@ function submitGuessingRange() {
 
 function validateRange() {
   if (userGuess < min || userGuess > max) {
-    // clearInputField();
     alert('Choose a number from ' + min + ' to ' + max)
     displayUserGuess();
   }

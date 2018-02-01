@@ -12,10 +12,6 @@ span.user_range_display {
   font-size: 2rem;
 }
 
-/*p {
-  display: inline-block;
-}*/
-
 #create_min_max_input {
   border: 2px solid #dc548a;
   width: 472px;
@@ -81,3 +77,28 @@ p {
 .form_btn:hover {
   background-color: #EB008B;
 }
+
+.pop-up {
+  margin: 20px auto;
+  background-color: #cd5e89;
+  width: 405px;
+  font-size: 2rem;
+  padding: 5%;
+  border-radius: 50%;
+  text-align: center;
+  border: 5px solid #404041;
+}
+
+.pop-up-hide {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+
+
+

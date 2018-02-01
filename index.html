@@ -14,13 +14,13 @@
   <main>
     <form>
       <label for="form_input"></label>
-      <input type="number" name="form_input" id="form_input" placeholder="Enter your guess">
-      <div id="form_btns">
+      <input type="number" name="form_input" id="form_input" placeholder="Enter your guess" alt="Enter your numeric guess" tabindex="4">
+      <article id="form_btns">
         <label for="form_btn_guess"></label>
         <input type="submit" name="guess" value="Guess" class="form_btn" id="form_btn_guess" disabled="true">
         <label for="form_btn_clear"></label>
         <input type="submit" name="clear" value="Clear" class="form_btn" id="form_btn_clear" disabled="true">
-      </div>
+      </article>
       <h2 id="user_feedback_top">Guess a number
         <span id="displayed_min" class="user_range_display"></span>-<span id="displayed_max" class="user_range_display"></span>.
       </h2>
@@ -28,16 +28,17 @@
         <p></p>
         <fieldset id="create_min_max_input">
           <h2 id="set_your_guess">Set your own guessing range.</h2>
-          <label class="label_min_max" for="min">Min: </label>
-          <input type="number" name="min" id="user_selected_min">
+          <label class="label_min_max" for="min" alt="Set the minimum number for your number guessing range">Min: </label>
+          <input type="number" name="min" id="user_selected_min" aria-required="true" alt="Set the minimum number for your number guessing range" tabindex="1" aria-labeledby="Guessing range minimum number">
           <label class="label_min_max" for="max">Max: </label>
-          <input type="number" name="max" id="user_selected_max">
+          <input type="number" name="max" id="user_selected_max" aria-required="true" alt="Set the maximum number for your number guessing range" tabindex="2">
           <label for="guessing_range_btn"></label>
-          <button type="submit" id="guessing_range_btn">Submit</button>
+          <button type="submit" id="guessing_range_btn" aria-required="true" tabindex="3">Submit</button>
         </fieldset>
       </article>
       <h2 id="user_feedback_bottom">Good Luck!</h2>
       <article id="article_btn_reset">
+        <label for="input_btn_reset"></label>
         <input type="reset" name="reset" class="form_btn" id="input_btn_reset" disabled="true">
       </article>
     </form>
