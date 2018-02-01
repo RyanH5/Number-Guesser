@@ -3,39 +3,57 @@ document.querySelector('#form_btn_guess').addEventListener('click', submitUserGu
 document.querySelector('#form_input').addEventListener('input', enableBtn);
 document.querySelector('#form_btn_clear').addEventListener('click', clearInputField);
 document.querySelector('#input_btn_reset').addEventListener('click', resetGame);
-// document.querySelector('#user_selected_min').addEventListener('input', createNewMin);
-// document.querySelector('#user_selected_max').addEventListener('input', createNewMax);
 document.querySelector('#guessing_range_btn').addEventListener('click', submitGuessingRange)
 
 function getRandomNumber(event) {
   event.preventDefault();
   max = parseInt(document.querySelector('#user_selected_max').value);
   min  = parseInt(document.querySelector('#user_selected_min').value);
-  randomNum = Math.floor(Math.random() * (max - min) + 1);
+  randomNum = Math.floor(Math.random() * (max - min +1) + min);
   console.log(randomNum);
   enableBtn();
 }
 
 function enableBtn() {
-  if (document.querySelector('#form_input').value !== '') {
-    document.querySelector('#form_btn_guess').disabled = false;
-    document.querySelector('#form_btn_clear').disabled = false;
-    document.querySelector('#input_btn_reset').disabled = false;
+  if (document.querySelector('#form_input').value !== '' && document.querySelector('#user_selected_min').value !== '') {
+    enableBtns();
+    addEnabledStyle();
+  } else {
+    disableBtns();
   }
 }
 
+
+function enableBtns() {
+  document.querySelector('#form_btn_guess').disabled = false;
+  document.querySelector('#form_btn_clear').disabled = false;
+  document.querySelector('#input_btn_reset').disabled = false;
+}
+
+function disableBtns() {
+  document.querySelector('#form_btn_guess').disabled = true;
+  document.querySelector('#form_btn_clear').disabled = true;
+  document.querySelector('#input_btn_reset').disabled = true;
+}
+
+function addEnabledStyle() {
+  document.querySelector('#form_btn_guess').style.backgroundColor = '#929497';
+  document.querySelector('#form_btn_clear').style.backgroundColor = '#929497';
+  document.querySelector('#input_btn_reset').style.backgroundColor = '#929497';
+}
+
 function submitUserGuess(event) {
+  userGuess = parseInt(document.querySelector('#form_input').value);
   event.preventDefault();
-  var userGuess = parseInt(document.querySelector('#form_input').value);
-  document.querySelector('#article_user_input').innerText = parseInt(document.querySelector('#form_input').value);
-  console.log(randomNum);
-  if (userGuess === randomNum) {    
-    correctGuess();
-  } else {
-    tooHigh();
-    tooLow();
-  }
+  validateRange();
+  displayUserGuess();
+  console.log(randomNum); 
+  validateGuess();    
   clearAndFocusInputField();
+}
+
+function displayUserGuess() {
+  document.querySelector('#article_user_input').innerText = parseInt(document.querySelector('#form_input').value);
 }
 
 function clearAndFocusInputField() {
@@ -44,22 +62,36 @@ function clearAndFocusInputField() {
 }
 
 function correctGuess() {
+  if (userGuess === randomNum) {
   document.querySelector('#user_feedback_top').innerText = 'BOOM';
   document.querySelector('#user_feedback_bottom').innerText = 'You nailed it, bro!';
+}
 }
 
 function tooHigh() {
   if (document.querySelector('#form_input').value > randomNum) {
     document.querySelector('#user_feedback_top').innerText = 'That is too high.';
-    document.querySelector('#user_feedback_bottom').innerText = 'Try Again.';
+    numberOutOfRangeArticleStyling();
   }
 }
 
 function tooLow() {
   if (document.querySelector('#form_input').value < randomNum) {
     document.querySelector('#user_feedback_top').innerText = 'That is too low';
-    document.querySelector('#user_feedback_bottom').innerText = 'Try Again.';
+    numberOutOfRangeArticleStyling();
   }
+}
+
+function validateGuess() {
+  correctGuess();
+  tooHigh();
+  tooLow();
+}
+
+function numberOutOfRangeArticleStyling() {
+  document.querySelector('#user_feedback_bottom').innerText = 'Guess Again, ' + min + ' to ' + max;
+  displayUserGuess();
+  document.querySelector('#article_user_input').style.height = "270px";
 }
 
 function clearInputField() {
@@ -83,6 +115,18 @@ function submitGuessingRange() {
   createNewMin();
   createNewMax();
 }
+
+function validateRange() {
+  if (userGuess < min || userGuess > max) {
+    // clearInputField();
+    alert('Choose a number from ' + min + ' to ' + max)
+    displayUserGuess();
+  }
+}
+
+
+
+
 
 
 
